@@ -17,6 +17,17 @@
                                                   toViewController:(UIViewController *)toVC
 {
     CALTransitionAnimator *animator = [CALTransitionAnimator new];
+    
+    switch (operation) {
+        case UINavigationControllerOperationPush:
+            animator.isDismissing = NO;
+            break;
+        case UINavigationControllerOperationNone:
+        case UINavigationControllerOperationPop:
+            animator.isDismissing = YES;
+            break;
+    }
+    
     return animator;
 }
 

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xJ7-xz-SfY">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Poster" translatesAutoresizingMaskIntoConstraints="NO" id="xJ7-xz-SfY">
                                 <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -67,7 +67,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nf5-he-DXj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Poster" translatesAutoresizingMaskIntoConstraints="NO" id="nf5-he-DXj">
                                 <rect key="frame" x="100.5" y="100" width="400" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="349" id="InA-wb-DQp"/>
@@ -115,4 +115,7 @@
             <point key="canvasLocation" x="-353" y="198"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Poster" width="800" height="444"/>
+    </resources>
 </document>

@@ -10,4 +10,6 @@
 
 @interface CALTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 
+@property (nonatomic) BOOL isDismissing;
+
 @end

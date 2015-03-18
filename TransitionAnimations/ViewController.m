@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @end
 
 @implementation ViewController

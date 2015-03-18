@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Dgg-CX-jEo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,13 +16,85 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xJ7-xz-SfY">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="349" id="RRU-5O-V59"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="RRU-5O-V59"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="993-1d-QNi" appends="YES" id="fzz-8s-Wzj"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="xJ7-xz-SfY" secondAttribute="centerY" id="3kb-lN-E8i"/>
+                            <constraint firstItem="xJ7-xz-SfY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1/3" id="Cmk-Md-qFP"/>
+                            <constraint firstItem="xJ7-xz-SfY" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1/3" id="KXt-LX-mPY"/>
+                            <constraint firstAttribute="centerX" secondItem="xJ7-xz-SfY" secondAttribute="centerX" id="sXT-HL-Vgs"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1K3-iV-QMr"/>
+                    <connections>
+                        <outlet property="imageView" destination="xJ7-xz-SfY" id="cv5-3G-4it"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="993-1d-QNi">
+                    <connections>
+                        <segue destination="7BD-pU-tsm" kind="push" id="4vI-qG-Jmx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="478" y="198"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="eZ2-aK-IAJ">
+            <objects>
+                <viewController id="7BD-pU-tsm" customClass="CALImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wKp-yP-aon"/>
+                        <viewControllerLayoutGuide type="bottom" id="kxS-LA-W6e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m3i-5K-uDH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nf5-he-DXj">
+                                <rect key="frame" x="100.5" y="100" width="400" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="349" id="InA-wb-DQp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="InA-wb-DQp"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nf5-he-DXj" firstAttribute="centerY" secondItem="m3i-5K-uDH" secondAttribute="centerY" id="5SG-HV-Kr9"/>
+                            <constraint firstItem="nf5-he-DXj" firstAttribute="height" secondItem="m3i-5K-uDH" secondAttribute="height" multiplier="2/3" id="cn5-oK-cKQ"/>
+                            <constraint firstItem="nf5-he-DXj" firstAttribute="width" secondItem="m3i-5K-uDH" secondAttribute="width" multiplier="2/3" id="jSP-sK-E55"/>
+                            <constraint firstItem="nf5-he-DXj" firstAttribute="centerX" secondItem="m3i-5K-uDH" secondAttribute="centerX" id="pRG-2K-LWa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gmt-qI-vkk"/>
+                    <connections>
+                        <outlet property="imageView" destination="nf5-he-DXj" id="VKH-CE-Wh2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P76-Fz-KrL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216" y="198"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XHH-Y6-8vz">

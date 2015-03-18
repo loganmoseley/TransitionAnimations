@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CALTransitionController.h
 //  TransitionAnimations
 //
 //  Created by Logan Moseley on 3/18/15.
@@ -8,10 +8,6 @@
 
 @import UIKit;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface CALTransitionController : NSObject <UINavigationControllerDelegate>
 
 @end
-

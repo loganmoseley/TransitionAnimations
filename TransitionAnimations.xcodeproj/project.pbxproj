@@ -14,6 +14,8 @@
 		70AC57E51AB9BA31009857E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70AC57E41AB9BA31009857E6 /* Images.xcassets */; };
 		70AC57E81AB9BA31009857E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AC57E61AB9BA31009857E6 /* LaunchScreen.xib */; };
 		70AC57F41AB9BA31009857E6 /* TransitionAnimationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AC57F31AB9BA31009857E6 /* TransitionAnimationsTests.m */; };
+		70AC57FF1AB9BB3B009857E6 /* CALTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AC57FE1AB9BB3B009857E6 /* CALTransitionController.m */; };
+		70AC58021AB9BB91009857E6 /* CALTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AC58011AB9BB91009857E6 /* CALTransitionAnimator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		70AC57ED1AB9BA31009857E6 /* TransitionAnimationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransitionAnimationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70AC57F21AB9BA31009857E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70AC57F31AB9BA31009857E6 /* TransitionAnimationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransitionAnimationsTests.m; sourceTree = "<group>"; };
+		70AC57FD1AB9BB3B009857E6 /* CALTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALTransitionController.h; sourceTree = "<group>"; };
+		70AC57FE1AB9BB3B009857E6 /* CALTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CALTransitionController.m; sourceTree = "<group>"; };
+		70AC58001AB9BB91009857E6 /* CALTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALTransitionAnimator.h; sourceTree = "<group>"; };
+		70AC58011AB9BB91009857E6 /* CALTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CALTransitionAnimator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,10 @@
 				70AC57DC1AB9BA31009857E6 /* AppDelegate.m */,
 				70AC57DE1AB9BA31009857E6 /* ViewController.h */,
 				70AC57DF1AB9BA31009857E6 /* ViewController.m */,
+				70AC57FD1AB9BB3B009857E6 /* CALTransitionController.h */,
+				70AC57FE1AB9BB3B009857E6 /* CALTransitionController.m */,
+				70AC58001AB9BB91009857E6 /* CALTransitionAnimator.h */,
+				70AC58011AB9BB91009857E6 /* CALTransitionAnimator.m */,
 				70AC57E11AB9BA31009857E6 /* Main.storyboard */,
 				70AC57E41AB9BA31009857E6 /* Images.xcassets */,
 				70AC57E61AB9BA31009857E6 /* LaunchScreen.xib */,
@@ -222,6 +232,8 @@
 				70AC57E01AB9BA31009857E6 /* ViewController.m in Sources */,
 				70AC57DD1AB9BA31009857E6 /* AppDelegate.m in Sources */,
 				70AC57DA1AB9BA31009857E6 /* main.m in Sources */,
+				70AC58021AB9BB91009857E6 /* CALTransitionAnimator.m in Sources */,
+				70AC57FF1AB9BB3B009857E6 /* CALTransitionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

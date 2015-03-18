@@ -10,8 +10,7 @@
 
 @interface ViewController : UIViewController
 
-- (CGRect)transitionFromRect;
-- (UIView *)transitionFromView;
+- (CGRect)transitionRectForTransitionContext:(id <UIViewControllerContextTransitioning>)transitionContext;
 
 @end
 

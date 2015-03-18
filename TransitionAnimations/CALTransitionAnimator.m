@@ -15,7 +15,7 @@
 // This is used for percent driven interactive transitions, as well as for container controllers that have companion animations that might need to
 // synchronize with the main animation.
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return 1;
+    return 0.25;
 }
 
 // This method can only  be a nop if the transition is interactive and not a percentDriven interactive transition.
@@ -37,13 +37,14 @@
     // (while container is right!).
     destination.view.bounds = container.bounds;
     
+    [source.view layoutIfNeeded];
     [destination.view layoutIfNeeded];
     CGAffineTransform originalDestinationTransform = destination.view.transform;
     CGAffineTransform originalSourceTransform = source.view.transform;
     
-    CGRect fromRect = [(ViewController *)source transitionFromRect];
-    CGRect toRect = [(CALImageViewController *)destination transitionToRect];
-    CGAffineTransform sourceToDestinationTransform = CGAffineScaleTransformFromRectToRect(fromRect, toRect);
+    CGRect fromRect = [(ViewController *)source transitionRectForTransitionContext:transitionContext];
+    CGRect toRect = [(CALImageViewController *)destination transitionRectForTransitionContext:transitionContext];
+    CGAffineTransform sourceToDestinationTransform = CGAffineTransformFromRectToRect(fromRect, toRect);
     
     destination.view.alpha = 0;
     destination.view.transform = CGAffineTransformInvert(sourceToDestinationTransform);
@@ -70,15 +71,27 @@
     UIViewController *destination = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView           *container   = [transitionContext containerView];
     
-//    destination.view.transform = CGAffineTransformMakeScale(3, 3);
-    [destination beginAppearanceTransition:YES animated:YES];
+    [source.view layoutIfNeeded];
+    [destination.view layoutIfNeeded];
+    CGAffineTransform originalDestinationTransform = destination.view.transform;
+    CGAffineTransform originalSourceTransform = source.view.transform;
+    
+    CGRect fromRect = [(CALImageViewController *)source transitionRectForTransitionContext:transitionContext];
+    CGRect toRect = [(ViewController *)destination transitionRectForTransitionContext:transitionContext];
+    CGAffineTransform destinationToSourceTransform = CGAffineTransformFromRectToRect(toRect, fromRect);
+    
+    destination.view.alpha = 0;
+    destination.view.transform = CGAffineTransformConcat(originalDestinationTransform, destinationToSourceTransform);
     [container addSubview:destination.view];
+    [destination beginAppearanceTransition:YES animated:YES];
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         source.view.alpha = 0;
-//                         destination.view.transform = CGAffineTransformIdentity;
-//                         source.view.transform = CGAffineTransformMakeScale(0.5, 0.5);
+                         destination.view.alpha = 1;
+                         destination.view.transform = CGAffineTransformIdentity;
+                         source.view.transform = CGAffineTransformConcat(originalSourceTransform, CGAffineTransformInvert(destinationToSourceTransform));
                      } completion:^(BOOL finished) {
                          [destination endAppearanceTransition];
                          [source.view removeFromSuperview];
@@ -88,7 +101,7 @@
 
 // http://stackoverflow.com/a/14764286/1621334 and Danny Zlobinsky
 // does not consider rotation
-CG_INLINE CGAffineTransform CGAffineScaleTransformFromRectToRect(CGRect fromRect, CGRect toRect) {
+CG_INLINE CGAffineTransform CGAffineTransformFromRectToRect(CGRect fromRect, CGRect toRect) {
     CGSize scale = CGSizeMake(toRect.size.width/fromRect.size.width, toRect.size.height/fromRect.size.height);
     CGPoint translation = CGPointMake(CGRectGetMidX(toRect) - CGRectGetMidX(fromRect), CGRectGetMidY(toRect) - CGRectGetMidY(fromRect));
     return CGAffineTransformMake(scale.width, 0, 0, scale.height, translation.x, translation.y);

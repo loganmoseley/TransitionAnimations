@@ -28,12 +28,8 @@
     
 }
 
-- (CGRect)transitionFromRect {
+- (CGRect)transitionRectForTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext {
     return [self.view convertRect:self.imageView.frame toView:nil];
-}
-
-- (UIView *)transitionFromView {
-    return self.imageView;
 }
 
 @end

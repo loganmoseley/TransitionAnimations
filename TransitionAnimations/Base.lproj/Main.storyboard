@@ -32,12 +32,20 @@
                                     <outletCollection property="gestureRecognizers" destination="993-1d-QNi" appends="YES" id="fzz-8s-Wzj"/>
                                 </connections>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First screen label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44P-Is-t01">
+                                <rect key="frame" x="235" y="414" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.15686275059999999" green="0.61568629740000003" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="xJ7-xz-SfY" secondAttribute="centerY" id="3kb-lN-E8i"/>
                             <constraint firstItem="xJ7-xz-SfY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1/3" id="Cmk-Md-qFP"/>
                             <constraint firstItem="xJ7-xz-SfY" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1/3" id="KXt-LX-mPY"/>
+                            <constraint firstItem="44P-Is-t01" firstAttribute="top" secondItem="xJ7-xz-SfY" secondAttribute="bottom" constant="14" id="fgb-MQ-GyI"/>
+                            <constraint firstItem="xJ7-xz-SfY" firstAttribute="centerX" secondItem="44P-Is-t01" secondAttribute="centerX" id="rXa-1m-bjr"/>
                             <constraint firstAttribute="centerX" secondItem="xJ7-xz-SfY" secondAttribute="centerX" id="sXT-HL-Vgs"/>
                         </constraints>
                     </view>
@@ -78,11 +86,19 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second screen label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F85-JS-WEn">
+                                <rect key="frame" x="107" y="520" width="187" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98781651260000003" green="0.3011045456" blue="0.33733540769999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nf5-he-DXj" firstAttribute="centerY" secondItem="m3i-5K-uDH" secondAttribute="centerY" id="5SG-HV-Kr9"/>
                             <constraint firstItem="nf5-he-DXj" firstAttribute="leading" secondItem="m3i-5K-uDH" secondAttribute="leading" id="5Ud-qc-luH"/>
+                            <constraint firstItem="F85-JS-WEn" firstAttribute="top" secondItem="nf5-he-DXj" secondAttribute="bottom" constant="20" id="B42-9W-M6S"/>
+                            <constraint firstItem="nf5-he-DXj" firstAttribute="centerX" secondItem="F85-JS-WEn" secondAttribute="centerX" id="aGf-1W-Ugb"/>
                             <constraint firstItem="nf5-he-DXj" firstAttribute="height" secondItem="m3i-5K-uDH" secondAttribute="height" multiplier="2/3" id="cn5-oK-cKQ"/>
                             <constraint firstItem="nf5-he-DXj" firstAttribute="width" secondItem="m3i-5K-uDH" secondAttribute="width" multiplier="2/3" id="jSP-sK-E55"/>
                         </constraints>

@@ -10,7 +10,6 @@
 
 @interface CALImageViewController : UIViewController
 
-- (CGRect)transitionToRect;
-- (UIView *)transitionToView;
+- (CGRect)transitionRectForTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext;
 
 @end

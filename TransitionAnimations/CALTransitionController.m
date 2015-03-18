@@ -8,13 +8,15 @@
 
 #import "CALTransitionController.h"
 #import "CALTransitionAnimator.h"
+#import "ViewController.h"
+#import "CALImageViewController.h"
 
 @implementation CALTransitionController
 
 - (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                    animationControllerForOperation:(UINavigationControllerOperation)operation
-                                                fromViewController:(UIViewController *)fromVC
-                                                  toViewController:(UIViewController *)toVC
+                                                fromViewController:(ViewController *)fromVC
+                                                  toViewController:(CALImageViewController *)toVC
 {
     CALTransitionAnimator *animator = [CALTransitionAnimator new];
     

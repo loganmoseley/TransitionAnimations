@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B6500CAD-4E23-428E-B81E-5B257B928D21</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TransitionAnimations</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>990C364DED2B4CB77E8E30F4E7FF289FE0B1E32D</key>
+		<string>github.com:loganmoseley/TransitionAnimations.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TransitionAnimations.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>990C364DED2B4CB77E8E30F4E7FF289FE0B1E32D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:loganmoseley/TransitionAnimations.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>990C364DED2B4CB77E8E30F4E7FF289FE0B1E32D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>990C364DED2B4CB77E8E30F4E7FF289FE0B1E32D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TransitionAnimations</string>
+		</dict>
+	</array>
+</dict>
+</plist>

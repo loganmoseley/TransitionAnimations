@@ -10,4 +10,7 @@
 
 @interface CALImageViewController : UIViewController
 
+- (CGRect)transitionToRect;
+- (UIView *)transitionToView;
+
 @end

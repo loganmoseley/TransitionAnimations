@@ -49,7 +49,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="993-1d-QNi">
                     <connections>
-                        <segue destination="7BD-pU-tsm" kind="push" id="4vI-qG-Jmx"/>
+                        <segue destination="7BD-pU-tsm" kind="show" id="4vI-qG-Jmx"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -67,8 +67,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Poster" translatesAutoresizingMaskIntoConstraints="NO" id="nf5-he-DXj">
-                                <rect key="frame" x="100.5" y="100" width="400" height="400"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PosterUpsideDown" translatesAutoresizingMaskIntoConstraints="NO" id="nf5-he-DXj">
+                                <rect key="frame" x="0.0" y="100" width="400" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="349" id="InA-wb-DQp"/>
                                 </constraints>
@@ -82,9 +82,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nf5-he-DXj" firstAttribute="centerY" secondItem="m3i-5K-uDH" secondAttribute="centerY" id="5SG-HV-Kr9"/>
+                            <constraint firstItem="nf5-he-DXj" firstAttribute="leading" secondItem="m3i-5K-uDH" secondAttribute="leading" id="5Ud-qc-luH"/>
                             <constraint firstItem="nf5-he-DXj" firstAttribute="height" secondItem="m3i-5K-uDH" secondAttribute="height" multiplier="2/3" id="cn5-oK-cKQ"/>
                             <constraint firstItem="nf5-he-DXj" firstAttribute="width" secondItem="m3i-5K-uDH" secondAttribute="width" multiplier="2/3" id="jSP-sK-E55"/>
-                            <constraint firstItem="nf5-he-DXj" firstAttribute="centerX" secondItem="m3i-5K-uDH" secondAttribute="centerX" id="pRG-2K-LWa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gmt-qI-vkk"/>
@@ -117,5 +117,6 @@
     </scenes>
     <resources>
         <image name="Poster" width="800" height="444"/>
+        <image name="PosterUpsideDown" width="800" height="444"/>
     </resources>
 </document>

@@ -24,6 +24,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (CGRect)transitionToRect {
+    return [self.view convertRect:self.imageView.frame toView:nil];
+}
+
+- (UIView *)transitionToView {
+    return self.imageView;
+}
+
 /*
 #pragma mark - Navigation
 

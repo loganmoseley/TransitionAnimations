@@ -1,0 +1,8 @@
+.DS_Store
+*.mode1v3
+*.pbxuser
+*.perspectivev3
+xcuserdata
+
+# Would usually ignore, but leaving in for the CocoaPods.
+# *.xcworkspace

@@ -25,7 +25,7 @@
 }
 
 - (CGRect)transitionRectForTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext {
-    return [self.view convertRect:self.imageView.frame toView:nil];
+    return [self.imageView.superview convertRect:self.imageView.frame toView:nil];
 }
 
 /*

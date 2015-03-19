@@ -17,6 +17,7 @@
 		70AC57FF1AB9BB3B009857E6 /* CALTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AC57FE1AB9BB3B009857E6 /* CALTransitionController.m */; };
 		70AC58021AB9BB91009857E6 /* CALTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AC58011AB9BB91009857E6 /* CALTransitionAnimator.m */; };
 		70AC58051AB9BD8D009857E6 /* CALImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AC58041AB9BD8C009857E6 /* CALImageViewController.m */; };
+		D2115BD71ABB217600257DA1 /* UIView+Rendering.m in Sources */ = {isa = PBXBuildFile; fileRef = D2115BD61ABB217600257DA1 /* UIView+Rendering.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		70AC58011AB9BB91009857E6 /* CALTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CALTransitionAnimator.m; sourceTree = "<group>"; };
 		70AC58031AB9BD8C009857E6 /* CALImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CALImageViewController.h; sourceTree = "<group>"; };
 		70AC58041AB9BD8C009857E6 /* CALImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CALImageViewController.m; sourceTree = "<group>"; };
+		D2115BD51ABB217600257DA1 /* UIView+Rendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Rendering.h"; sourceTree = "<group>"; };
+		D2115BD61ABB217600257DA1 /* UIView+Rendering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Rendering.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				70AC57FE1AB9BB3B009857E6 /* CALTransitionController.m */,
 				70AC58001AB9BB91009857E6 /* CALTransitionAnimator.h */,
 				70AC58011AB9BB91009857E6 /* CALTransitionAnimator.m */,
+				D2115BD51ABB217600257DA1 /* UIView+Rendering.h */,
+				D2115BD61ABB217600257DA1 /* UIView+Rendering.m */,
 				70AC57E11AB9BA31009857E6 /* Main.storyboard */,
 				70AC57E41AB9BA31009857E6 /* Images.xcassets */,
 				70AC57E61AB9BA31009857E6 /* LaunchScreen.xib */,
@@ -235,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70AC57E01AB9BA31009857E6 /* ViewController.m in Sources */,
+				D2115BD71ABB217600257DA1 /* UIView+Rendering.m in Sources */,
 				70AC57DD1AB9BA31009857E6 /* AppDelegate.m in Sources */,
 				70AC57DA1AB9BA31009857E6 /* main.m in Sources */,
 				70AC58051AB9BD8D009857E6 /* CALImageViewController.m in Sources */,
@@ -432,6 +438,7 @@
 				70AC57F91AB9BA31009857E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		70AC57FA1AB9BA31009857E6 /* Build configuration list for PBXNativeTarget "TransitionAnimationsTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +447,7 @@
 				70AC57FC1AB9BA31009857E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

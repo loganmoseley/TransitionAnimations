@@ -9,6 +9,7 @@
 #import "CALTransitionAnimator.h"
 #import "ViewController.h"
 #import "CALImageViewController.h"
+#import "UIView+Rendering.h"
 
 @implementation CALTransitionAnimator
 
@@ -46,8 +47,8 @@
     CGRect toRect = [(CALImageViewController *)toViewController transitionRectForTransitionContext:transitionContext];
     CGAffineTransform fromToToTransform = CGAffineTransformFromRectToRect(fromRect, toRect);
     
-    UIView *fromVCSnapshot = [[self class] snapshotViewFromView:fromViewController.view afterScreenUpdates:YES];
-    UIView *toVCSnapshot = [[self class] snapshotViewFromView:toViewController.view afterScreenUpdates:YES];
+    UIView *fromVCSnapshot = [fromViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
+    UIView *toVCSnapshot = [toViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
     toVCSnapshot.alpha = 0;
     toVCSnapshot.transform = CGAffineTransformInvert(fromToToTransform);
     [containerView addSubview:fromVCSnapshot];
@@ -86,8 +87,8 @@
     CGRect toRect = [(ViewController *)toViewController transitionRectForTransitionContext:transitionContext];
     CGAffineTransform toToFromTransform = CGAffineTransformFromRectToRect(toRect, fromRect);
     
-    UIView *fromVCSnapshot = [[self class] snapshotViewFromView:fromViewController.view afterScreenUpdates:YES];
-    UIView *toVCSnapshot = [[self class] snapshotViewFromView:toViewController.view afterScreenUpdates:YES];
+    UIView *fromVCSnapshot = [fromViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
+    UIView *toVCSnapshot = [toViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
     toVCSnapshot.transform = CGAffineTransformConcat(originalToTransform, toToFromTransform);
     [containerView addSubview:toVCSnapshot];
     [containerView addSubview:fromVCSnapshot];
@@ -104,21 +105,11 @@
                      } completion:^(BOOL finished) {
                          [fromVCSnapshot removeFromSuperview];
                          [toVCSnapshot removeFromSuperview];
-                         [containerView addSubview:toViewController.view];
                          [fromViewController.view removeFromSuperview];
+                         [containerView addSubview:toViewController.view];
                          [toViewController endAppearanceTransition];
                          [transitionContext completeTransition:YES];
                      }];
-}
-
-+ (UIView *)snapshotViewFromView:(UIView *)inView afterScreenUpdates:(BOOL)afterScreenUpdates {
-    UIView *replicantView = [inView snapshotViewAfterScreenUpdates:afterScreenUpdates];
-    replicantView.alpha = inView.alpha;
-    replicantView.bounds = inView.bounds;
-    replicantView.center = inView.center;
-    replicantView.contentScaleFactor = inView.contentScaleFactor;
-    replicantView.transform = inView.transform;
-    return replicantView;
 }
 
 // http://stackoverflow.com/a/14764286/1621334 and Danny Zlobinsky

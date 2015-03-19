@@ -7,10 +7,9 @@
 //
 
 @import UIKit;
+#import "NYTTransitionZoomAnimationDataSource.h"
 
-@interface ViewController : UIViewController
-
-- (CGRect)transitionRectForTransitionContext:(id <UIViewControllerContextTransitioning>)transitionContext;
+@interface ViewController : UIViewController <NYTTransitionZoomAnimationDataSource>
 
 @end
 

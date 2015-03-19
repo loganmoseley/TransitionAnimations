@@ -52,6 +52,7 @@
 		70AC58041AB9BD8C009857E6 /* CALImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CALImageViewController.m; sourceTree = "<group>"; };
 		D2115BD51ABB217600257DA1 /* UIView+Rendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Rendering.h"; sourceTree = "<group>"; };
 		D2115BD61ABB217600257DA1 /* UIView+Rendering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Rendering.m"; sourceTree = "<group>"; };
+		D2115BD81ABB2FA300257DA1 /* NYTTransitionZoomAnimationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYTTransitionZoomAnimationDataSource.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +106,7 @@
 				70AC58011AB9BB91009857E6 /* CALTransitionAnimator.m */,
 				D2115BD51ABB217600257DA1 /* UIView+Rendering.h */,
 				D2115BD61ABB217600257DA1 /* UIView+Rendering.m */,
+				D2115BD81ABB2FA300257DA1 /* NYTTransitionZoomAnimationDataSource.h */,
 				70AC57E11AB9BA31009857E6 /* Main.storyboard */,
 				70AC57E41AB9BA31009857E6 /* Images.xcassets */,
 				70AC57E61AB9BA31009857E6 /* LaunchScreen.xib */,

@@ -7,9 +7,8 @@
 //
 
 #import "CALTransitionAnimator.h"
-#import "ViewController.h"
-#import "CALImageViewController.h"
 #import "UIView+Rendering.h"
+#import "NYTTransitionZoomAnimationDataSource.h"
 
 @implementation CALTransitionAnimator
 
@@ -43,8 +42,10 @@
     CGAffineTransform originalFromTransform = fromViewController.view.transform;
     CGAffineTransform originalToTransform = toViewController.view.transform;
     
-    CGRect fromRect = [(ViewController *)fromViewController transitionRectForTransitionContext:transitionContext];
-    CGRect toRect = [(CALImageViewController *)toViewController transitionRectForTransitionContext:transitionContext];
+    // layouts setup, transforms saved
+    
+    CGRect fromRect = [[self class] transitionRectFromViewController:fromViewController transitionContext:transitionContext];
+    CGRect toRect = [[self class] transitionRectFromViewController:toViewController transitionContext:transitionContext];
     CGAffineTransform fromToToTransform = CGAffineTransformFromRectToRect(fromRect, toRect);
     
     UIView *fromVCSnapshot = [fromViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
@@ -54,8 +55,9 @@
     [containerView addSubview:fromVCSnapshot];
     [containerView addSubview:toVCSnapshot];
     
-    [fromViewController beginAppearanceTransition:NO animated:YES];
+    // snapshots setup and ready to animate
     
+    [fromViewController beginAppearanceTransition:NO animated:YES];
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0
                         options:UIViewAnimationOptionCurveEaseOut
@@ -83,8 +85,10 @@
     CGAffineTransform originalToTransform = toViewController.view.transform;
     CGAffineTransform originalFromTransform = fromViewController.view.transform;
     
-    CGRect fromRect = [(CALImageViewController *)fromViewController transitionRectForTransitionContext:transitionContext];
-    CGRect toRect = [(ViewController *)toViewController transitionRectForTransitionContext:transitionContext];
+    // layouts setup, transforms saved
+    
+    CGRect fromRect = [[self class] transitionRectFromViewController:fromViewController transitionContext:transitionContext];
+    CGRect toRect = [[self class] transitionRectFromViewController:toViewController transitionContext:transitionContext];
     CGAffineTransform toToFromTransform = CGAffineTransformFromRectToRect(toRect, fromRect);
     
     UIView *fromVCSnapshot = [fromViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
@@ -93,8 +97,9 @@
     [containerView addSubview:toVCSnapshot];
     [containerView addSubview:fromVCSnapshot];
     
-    [toViewController beginAppearanceTransition:YES animated:YES];
+    // snapshots setup and ready to animate
     
+    [toViewController beginAppearanceTransition:YES animated:YES];
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0
                         options:UIViewAnimationOptionCurveEaseOut
@@ -110,6 +115,15 @@
                          [toViewController endAppearanceTransition];
                          [transitionContext completeTransition:YES];
                      }];
+}
+
++ (CGRect)transitionRectFromViewController:(UIViewController *)viewController transitionContext:(id <UIViewControllerContextTransitioning>)transitionContext {
+    if ([viewController respondsToSelector:@selector(transitionRectForTransitionContext:)]) {
+        return [(id)viewController transitionRectForTransitionContext:transitionContext];
+    }
+    else {
+        return viewController.view.frame;
+    }
 }
 
 // http://stackoverflow.com/a/14764286/1621334 and Danny Zlobinsky

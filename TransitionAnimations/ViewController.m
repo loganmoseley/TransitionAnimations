@@ -14,22 +14,14 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-}
-
 - (CGRect)transitionRectForTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext {
-    return [self.imageView.superview convertRect:self.imageView.frame toView:nil];
+    UIView *transitionView = [self transitionViewForTransitionContext:transitionContext];
+    CGRect effectiveFrame = CGRectApplyAffineTransform(transitionView.frame, transitionView.transform);
+    return [transitionView.superview convertRect:effectiveFrame toView:nil];
+}
+
+- (UIView *)transitionViewForTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext {
+    return self.imageView;
 }
 
 @end

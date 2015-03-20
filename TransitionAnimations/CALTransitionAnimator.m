@@ -132,6 +132,7 @@
 // does not consider rotation
 CG_INLINE CGAffineTransform CGAffineTransformFromRectInRectToRect(CGRect fromRect, CGRect fromSupr, CGRect toRect) {
     CGSize scale = CGSizeMake(toRect.size.width/fromRect.size.width, toRect.size.height/fromRect.size.height);
+    CGAffineTransform scaleTransform = CGAffineTransformMakeScale(scale.width, scale.height);
     
     CGPoint fromSuprCenter = CGPointMake(CGRectGetMidX(fromSupr), CGRectGetMidY(fromSupr));
     CGPoint fromRectOffsetFromSuperCenter = CGPointSubtractPoint(fromRect.origin, fromSuprCenter);
@@ -139,9 +140,10 @@ CG_INLINE CGAffineTransform CGAffineTransformFromRectInRectToRect(CGRect fromRec
     CGPoint scaledFromRectOrigin = CGPointAddPoint(fromSuprCenter, scaledFromRectOffset);
     CGSize scaledFromRectSize = CGSizeMultiplyBySize(fromRect.size, scale);
     CGRect scaledFromRect = (CGRect){.origin = scaledFromRectOrigin, .size = scaledFromRectSize};
-    
     CGPoint translation = CGPointMake(CGRectGetMidX(toRect) - CGRectGetMidX(scaledFromRect), CGRectGetMidY(toRect) - CGRectGetMidY(scaledFromRect));
-    return CGAffineTransformMake(scale.width, 0, 0, scale.height, translation.x, translation.y);
+    CGAffineTransform translationTransform = CGAffineTransformMakeTranslation(translation.x, translation.y);
+    
+    return CGAffineTransformConcat(scaleTransform, translationTransform);
 }
 
 CG_INLINE CGSize CGSizeMultiplyBySize(CGSize s1, CGSize s2) {

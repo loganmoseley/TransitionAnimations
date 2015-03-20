@@ -44,14 +44,15 @@
     
     // layouts setup, transforms saved
     
-    CGRect fromRect = [[self class] transitionRectFromViewController:fromViewController transitionContext:transitionContext];
-    CGRect toRect = [[self class] transitionRectFromViewController:toViewController transitionContext:transitionContext];
-    CGAffineTransform fromToToTransform = CGAffineTransformFromRectToRect(fromRect, toRect);
-    
     UIView *fromVCSnapshot = [fromViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
     UIView *toVCSnapshot = [toViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
+    CGRect fromRect = [[self class] transitionRectFromViewController:fromViewController transitionContext:transitionContext];
+    CGRect toRect = [[self class] transitionRectFromViewController:toViewController transitionContext:transitionContext];
+    CGAffineTransform fromToToTransform = CGAffineTransformFromRectInRectToRect(fromRect, fromVCSnapshot.bounds, toRect);
+    CGAffineTransform toToFromTransform = CGAffineTransformFromRectInRectToRect(toRect, toVCSnapshot.bounds, fromRect);
+    
     toVCSnapshot.alpha = 0;
-    toVCSnapshot.transform = CGAffineTransformInvert(fromToToTransform);
+    toVCSnapshot.transform = toToFromTransform; // CGAffineTransformInvert(fromToToTransform);
     [containerView addSubview:fromVCSnapshot];
     [containerView addSubview:toVCSnapshot];
     
@@ -89,7 +90,7 @@
     
     CGRect fromRect = [[self class] transitionRectFromViewController:fromViewController transitionContext:transitionContext];
     CGRect toRect = [[self class] transitionRectFromViewController:toViewController transitionContext:transitionContext];
-    CGAffineTransform toToFromTransform = CGAffineTransformFromRectToRect(toRect, fromRect);
+    CGAffineTransform toToFromTransform = CGAffineTransformFromRectInRectToRect(toRect, CGRectNull, fromRect);
     
     UIView *fromVCSnapshot = [fromViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
     UIView *toVCSnapshot = [toViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
@@ -128,10 +129,46 @@
 
 // http://stackoverflow.com/a/14764286/1621334 and Danny Zlobinsky
 // does not consider rotation
-CG_INLINE CGAffineTransform CGAffineTransformFromRectToRect(CGRect fromRect, CGRect toRect) {
+CG_INLINE CGAffineTransform CGAffineTransformFromRectInRectToRect(CGRect fromRect, CGRect fromSupr, CGRect toRect) {
     CGSize scale = CGSizeMake(toRect.size.width/fromRect.size.width, toRect.size.height/fromRect.size.height);
-    CGPoint translation = CGPointMake(CGRectGetMidX(toRect) - CGRectGetMidX(fromRect), CGRectGetMidY(toRect) - CGRectGetMidY(fromRect));
+    
+    CGPoint fromSuprCenter = CGPointMake(CGRectGetMidX(fromSupr), CGRectGetMidY(fromSupr));
+    CGPoint fromRectOffsetFromSuperCenter = CGPointSubtractPoint(fromRect.origin, fromSuprCenter);
+    CGPoint scaledFromRectOffset = CGPointMultiplyBySize(fromRectOffsetFromSuperCenter, scale);
+    CGPoint scaledFromRectOrigin = CGPointAddPoint(fromSuprCenter, scaledFromRectOffset);
+    CGSize scaledFromRectSize = CGSizeMultiplyBySize(fromRect.size, scale);
+    CGRect scaledFromRect = (CGRect){.origin = scaledFromRectOrigin, .size = scaledFromRectSize};
+    
+    CGPoint translation = CGPointMake(CGRectGetMidX(toRect) - CGRectGetMidX(scaledFromRect), CGRectGetMidY(toRect) - CGRectGetMidY(scaledFromRect));
     return CGAffineTransformMake(scale.width, 0, 0, scale.height, translation.x, translation.y);
+}
+
+CG_INLINE CGSize CGSizeMultiplyBySize(CGSize s1, CGSize s2) {
+    CGSize s;
+    s.width = s1.width * s2.width;
+    s.height = s1.height * s2.height;
+    return s;
+}
+
+CG_INLINE CGPoint CGPointMultiplyBySize(CGPoint pt, CGSize s) {
+    CGPoint p;
+    p.x = pt.x * s.width;
+    p.y = pt.y * s.height;
+    return p;
+}
+
+CG_INLINE CGPoint CGPointAddPoint(CGPoint p1, CGPoint p2) {
+    CGPoint p;
+    p.x = p1.x + p2.x;
+    p.y = p1.y + p2.y;
+    return p;
+}
+
+CG_INLINE CGPoint CGPointSubtractPoint(CGPoint p1, CGPoint p2) {
+    CGPoint p;
+    p.x = p1.x - p2.x;
+    p.y = p1.y - p2.y;
+    return p;
 }
 
 @end

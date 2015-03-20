@@ -88,12 +88,13 @@
     
     // layouts setup, transforms saved
     
-    CGRect fromRect = [[self class] transitionRectFromViewController:fromViewController transitionContext:transitionContext];
-    CGRect toRect = [[self class] transitionRectFromViewController:toViewController transitionContext:transitionContext];
-    CGAffineTransform toToFromTransform = CGAffineTransformFromRectInRectToRect(toRect, CGRectNull, fromRect);
-    
     UIView *fromVCSnapshot = [fromViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
     UIView *toVCSnapshot = [toViewController.view snapshotViewAfterScreenUpdates:YES copyProperties:YES];
+    CGRect fromRect = [[self class] transitionRectFromViewController:fromViewController transitionContext:transitionContext];
+    CGRect toRect = [[self class] transitionRectFromViewController:toViewController transitionContext:transitionContext];
+    CGAffineTransform fromToToTransform = CGAffineTransformFromRectInRectToRect(fromRect, fromVCSnapshot.bounds, toRect);
+    CGAffineTransform toToFromTransform = CGAffineTransformFromRectInRectToRect(toRect, toVCSnapshot.bounds, fromRect);
+    
     toVCSnapshot.transform = CGAffineTransformConcat(originalToTransform, toToFromTransform);
     [containerView addSubview:toVCSnapshot];
     [containerView addSubview:fromVCSnapshot];
@@ -106,7 +107,7 @@
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
                          fromVCSnapshot.alpha = 0;
-                         fromVCSnapshot.transform = CGAffineTransformConcat(originalFromTransform, CGAffineTransformInvert(toToFromTransform));
+                         fromVCSnapshot.transform = CGAffineTransformConcat(originalFromTransform, fromToToTransform);
                          toVCSnapshot.transform = originalToTransform;
                      } completion:^(BOOL finished) {
                          [fromVCSnapshot removeFromSuperview];
